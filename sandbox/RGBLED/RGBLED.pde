@@ -8,22 +8,20 @@ int blue = 43;
 int green = 41;
 
 void setup() {
-  Serial.begin(9600);
-  establishContact();
+  establishSerialContact();
   setupPins(); 
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    count++;
-    inByte = Serial.read();
-    toggleBoardLED();
-    turnAllOff();
-    rotateColor();  
-  }
+  waitForInput();
+  count++;
+  inByte = Serial.read();
+  toggleBoardLED();
+  rotateColor();  
 }
 
-void establishContact() {
+void establishSerialContact() {
+  Serial.begin(9600);
   if (Serial.available() <= 0) {
     Serial.write('X');
   }
@@ -42,6 +40,7 @@ void turnAllOff() {
 }
 
 void rotateColor() {
+  turnAllOff();
   switch (count%3) {
     case 0:
       digitalWrite(red, HIGH);
@@ -61,5 +60,11 @@ void toggleBoardLED() {
   }
   else {
     digitalWrite(inByte, LOW);
+  }
+}
+
+void waitForInput() {
+  while(Serial.available() <= 0) {
+    delay(100); //nop while nothing on line
   }
 }
