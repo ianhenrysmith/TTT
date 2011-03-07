@@ -69,27 +69,28 @@ class Arduino:
 	def city(cls, city):
 		return {
   			'DENVER':		22,
-  			'BOULDER':		25,
-  			'VAIL':			28,
-  			'COLORADO SPRINGS': 	31,
-  			'FORT COLLINS': 	34,
-  			'PUEBLO': 		37,
-  			'GRAND JUNCTION': 	40,
-  			'LONGMONT': 		43,
-  			'DURANGO': 		46,
-  			'FORT MORGAN': 		49
+  			'BOULDER':		28,
+  			'VAIL':			34,
+  			'COLORADO SPRINGS': 	40,
+  			'FORT COLLINS': 	46,
+  			'PUEBLO': 		23,
+  			'GRAND JUNCTION': 	29,
+  			'LONGMONT': 		35,
+  			'DURANGO': 		41,
+  			'FORT MORGAN': 		47
 		}.get(city, 0)
 
 a = Arduino()
-a.write("FORT MORGAN","RED")
+a.write("DENVER","RED")
+a.write("BOULDER","RED")
 time.sleep(.5)
-a.write("LONGMONT","RED")
-time.sleep(.5)
-a.write("FORT MORGAN","BLUE")
-time.sleep(.5)
-a.write("LONGMONT","BLUE")
-time.sleep(.5)
-a.write("FORT MORGAN","GREEN")
-time.sleep(.5)
-a.write("LONGMONT","GREEN")
-time.sleep(.5)
+#a.write("BOULDER","RED")
+#time.sleep(.5)
+#a.write("DENVER","BLUE")
+#time.sleep(.5)
+#a.write("BOULDER","BLUE")
+#time.sleep(.5)
+#a.write("DENVER","GREEN")
+#time.sleep(.5)
+#a.write("BOULDER","GREEN")
+#time.sleep(.5)
